@@ -48,7 +48,7 @@ And so on, you get it.
 The wrapper scripts needs [LXD](https://linuxcontainers.org/lxd) installed and configured.
 While it might work on many Linux distributions, it has been tested on current Ubuntu releases only.
 Stock images for LXD containers are located on the [LXD image server](https://us.images.linuxcontainers.org/)
-It's your part to create suitable custiom images for use with LXW.
+It's your part to create suitable custom images for use with LXW.
 
 ## Installation
 
@@ -65,7 +65,7 @@ sudo chmod +x /usr/local/bin/lxw
 
 ## Commands
 
-### lxw create <image>
+### lxw create \<image>
 Create a container using a local or remote image
 
 Examples:
@@ -87,7 +87,7 @@ Stop (shutdown) the container
 ### lxw kill
 Destroy the container. Displays a confirmation message and deletes the container. All data outside of shared folders will get lost.  
 
-### lxw mount <alias> <host_path> <container_path>
+### lxw mount \<alias> \<host_path> \<container_path>
 Share a folder on the host system with the container. Both the host user and the user inside the container get full access rights. Arguments:
 
 *alias* - a custom name for the share, as there can be multiple ones
@@ -100,7 +100,7 @@ Example:
 lxw mount code ./source /var/www/html
 ```
 
-### lxw unmount <alias>
+### lxw unmount \<alias>
 
 Unmounts a shared folder using the its alias
 
