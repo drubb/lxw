@@ -90,9 +90,9 @@ Destroy the container. Displays a confirmation message and deletes the container
 ### lxw mount \<alias> \<host_path> \<container_path>
 Share a folder on the host system with the container. Both the host user and the user inside the container get full access rights. Arguments:
 
-*alias* - a custom name for the share, as there can be multiple ones
-*host_path* - The path on the host system (relative or absolute)
-*container_path* - The path inside the container (must be absolute)
+* *alias* - a custom name for the share, as there can be multiple ones
+* *host_path* - The path on the host system (relative or absolute)
+* *container_path* - The path inside the container (must be absolute)
 
 Example:
 
