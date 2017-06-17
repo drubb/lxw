@@ -9,10 +9,9 @@ create(){
     local image=$1
     local container=${PWD##*/}
     echo Creating container ${container} from image ${image}
-    lxc launch ${image} ${container}
+    lxc init ${image} ${container}
     lxc config set ${container} raw.idmap "both $(id -u) $(id -g)"
-    lxc restart ${container}
-    echo Container ${container} has been created and started.
+    echo Container ${container} has been created.
     echo Use lxw status to get the IP and add it to your hosts file,'if' required!
 }
 
