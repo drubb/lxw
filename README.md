@@ -19,9 +19,9 @@ local development environments. There are caveats for sure:
 * The technology is still young, and might be a moving target. 
 
 ### Why LXW ?
-LXW is a simple wrapper for LXD's command line interface, LXC. It's no replacement, but a small addition
+LXW is a simple wrapper for LXD's command line interface, lxc. It's no replacement, but a small addition
 to make some things simpler, e.g. mounting host folders inside containers, and sharing file access rights.
-In fact, it just uses plain LXC commands and some shell script magic to achieve this goal.
+In fact, it just uses plain lxc commands and some shell script magic to achieve this goal.
 
 ### Basic concept
 LXW uses preconfigured LXD images to spin up containers. So for example you might use a LXD stock image,
@@ -102,7 +102,7 @@ lxw mount code ./source /var/www/html
 
 ### lxw unmount \<alias>
 
-Unmounts a shared folder using the its alias
+Unmounts a shared folder using the alias
 
 Example:
 
