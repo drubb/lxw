@@ -65,6 +65,16 @@ sudo chmod +x /usr/local/bin/lxw
 
 ## Commands
 
+### lxw launch \<image>
+Create a container using a local or remote image, start it and enter the shell
+
+Examples:
+
+```
+lxw launch images:alpine/3.5
+lxw launch mylocalimage
+```
+
 ### lxw create \<image>
 Create a container using a local or remote image
 
