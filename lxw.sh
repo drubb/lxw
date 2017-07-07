@@ -2,6 +2,12 @@
 
 set -e
 
+launch(){
+    create $1
+    start
+    shell
+}
+
 # Create a new container using a specified image.
 # Use the current folder name as container name.
 # Map the host users uid/gid to the container user.
@@ -102,6 +108,7 @@ usage(){
     echo "Usage: lxw <command>"
     echo ""
     echo "Commands:"
+    echo "  launch <image>                           - Quickly create a container using an image, start it and enter a shell"
     echo "  create <image>                           - Create a container using an image"
     echo "  start                                    - Start the container"
     echo "  restart                                  - Restart the container"
@@ -122,6 +129,13 @@ fi
 
 # Run the command given as argument
 case "$1" in
+    "launch")
+    if [ $# -ne 2 ]; then
+      usage
+      exit 1;
+    fi
+    launch $2
+    ;;
   "create")
     if [ $# -ne 2 ]; then
       usage
