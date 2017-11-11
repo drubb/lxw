@@ -18,7 +18,7 @@ create(){
     lxc init ${image} ${container}
     lxc config set ${container} raw.idmap "both $(id -u) 0"
     echo Container ${container} has been created.
-    echo Use lxw status to get the IP and add it to your hosts file,'if' required!
+    echo Use lxw status to get the IP and add it to your hosts file, 'if' required!
 }
 
 # Start a container, using the current folder name as container name.
