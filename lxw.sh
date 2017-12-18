@@ -27,7 +27,7 @@ start(){
     echo Starting container ${container}
     lxc start ${container}
     echo Container ${container} has been started.
-    sleep 1
+    sleep 5
     echo The IP address is $(getip)
 }
 
@@ -37,7 +37,7 @@ restart(){
     echo Restarting container ${container}
     lxc restart ${container}
     echo Container ${container} has been restarted.
-    sleep 1
+    sleep 5
     echo The IP address is $(getip)
 }
 
