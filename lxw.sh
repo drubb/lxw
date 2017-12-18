@@ -18,6 +18,7 @@ create(){
     lxc init ${image} ${container}
     lxc config set ${container} boot.autostart false
     lxc config set ${container} raw.idmap "both $(id -u) 0"
+    lxc config set ${container} user.lxw.type lxw
     lxc config set ${container} user.lxw.base ${image}
     lxc config set ${container} user.lxw.created "$(date -Iseconds)"
     echo Container ${container} has been created.
