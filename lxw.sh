@@ -103,7 +103,12 @@ unmnt(){
 # Show the current status of the container (e.g. the IP)
 status(){
     local container=${PWD##*/}
-    lxc list ${container}
+    lxc list ${container} user.lxw.type=lxw
+}
+
+# List containers created by LXW
+list(){
+    lxc list user.lxw.type=lxw
 }
 
 # Show the current ip address of the container
@@ -130,6 +135,7 @@ usage(){
     echo "  unmount <alias>                          - Stop sharing a host folder with container"
     echo "  shell                                    - Open a shell inside the container"
     echo "  status                                   - Show current container status"
+    echo "  list                                     - List containers created by LXW"
     echo "  ip                                       - Show current container ip address"
     echo "  help                                     - Show usage instructions"
 }
@@ -187,6 +193,9 @@ case "$1" in
     ;;
   "status")
     status
+    ;;
+  "list")
+    list
     ;;
   "ip")
     getip
