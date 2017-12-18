@@ -19,7 +19,6 @@ create(){
     lxc config set ${container} boot.autostart false
     lxc config set ${container} raw.idmap "both $(id -u) 0"
     echo Container ${container} has been created.
-    echo Use lxw status to get the IP and add it to your hosts file, 'if' required!
 }
 
 # Start a container, using the current folder name as container name.
@@ -28,6 +27,8 @@ start(){
     echo Starting container ${container}
     lxc start ${container}
     echo Container ${container} has been started.
+    sleep 1
+    echo The IP address is $(getip)
 }
 
 # Restart a container, using the current folder name as container name.
@@ -36,6 +37,8 @@ restart(){
     echo Restarting container ${container}
     lxc restart ${container}
     echo Container ${container} has been restarted.
+    sleep 1
+    echo The IP address is $(getip)
 }
 
 # Shutdown a container, using the current folder name as container name.
@@ -62,7 +65,6 @@ delete(){
     local container=${PWD##*/}
     lxc delete ${container} -f
     echo Container ${container} has been removed.
-    echo Clean up your hosts file, 'if' required!
 }
 
 # Open a shell inside a container, using the current folder name as container name.
@@ -102,7 +104,7 @@ status(){
 }
 
 # Show the current ip address of the container
-ip(){
+getip(){
     local container=${PWD##*/}
     lxc list ${container} -c4 --format=csv | awk '{print $1;}'
 }
@@ -184,7 +186,7 @@ case "$1" in
     status
     ;;
   "ip")
-    ip
+    getip
     ;;
   "help")
     usage
