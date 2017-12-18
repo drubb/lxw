@@ -42,7 +42,7 @@ gives you a container named "someproject"
 * Start the container: `lxw start`
 * Open a shell:`lxw shell`
 
-And so on, you get it.
+And so on, you get it. If you need some examples on how to create custom local images, take a look at [this project](https://github.com/drubb/lxd-images) 
 
 ## Requirements
 The wrapper scripts needs [LXD](https://linuxcontainers.org/lxd) installed and configured.
