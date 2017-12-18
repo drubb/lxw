@@ -126,6 +126,9 @@ Open a shell inside the container, using the default shell configured inside the
 ### lxw status
 Display the current status of the container, including the IP
 
+### lxw ip
+Display the current ip address of the container
+
 ### lxw help
 Show usage instructions
 

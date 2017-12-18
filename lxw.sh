@@ -101,6 +101,12 @@ status(){
     lxc list ${container}
 }
 
+# Show the current ip address of the container
+ip(){
+    local container=${PWD##*/}
+    lxc list ${container} -c4 --format=csv | awk '{print $1;}'
+}
+
 
 # Show usage instructions
 usage(){
@@ -119,6 +125,7 @@ usage(){
     echo "  unmount <alias>                          - Stop sharing a host folder with container"
     echo "  shell                                    - Open a shell inside the container"
     echo "  status                                   - Show current container status"
+    echo "  ip                                       - Show current container ip address"
     echo "  help                                     - Show usage instructions"
 }
 
@@ -175,6 +182,9 @@ case "$1" in
     ;;
   "status")
     status
+    ;;
+  "ip")
+    ip
     ;;
   "help")
     usage
