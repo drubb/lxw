@@ -29,8 +29,8 @@ start(){
     local container=${PWD##*/}
     echo Starting container ${container}
     lxc start ${container}
+    until lxw ip | grep -q -m 3 "."; do sleep 0.5 ; done
     echo Container ${container} has been started.
-    sleep 5
     echo The IP address is $(getip)
 }
 
@@ -39,8 +39,8 @@ restart(){
     local container=${PWD##*/}
     echo Restarting container ${container}
     lxc restart ${container}
+    until lxw ip | grep -q -m 3 "."; do sleep 0.5 ; done
     echo Container ${container} has been restarted.
-    sleep 5
     echo The IP address is $(getip)
 }
 
