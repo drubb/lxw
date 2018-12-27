@@ -78,6 +78,12 @@ shell(){
     lxc exec ${container} su -
 }
 
+# Run a single shell command inside a container, using the current folder name as container name.
+execute(){
+    local container=${PWD##*/}
+    lxc exec ${container} -t -- ${command}
+}
+
 # Mount a host folder inside the container, using the current folder name as container name.
 # We need to specify an alias for the mount, the (absolute or relative) path on the host,
 # and the absolute path inside the container.
@@ -134,6 +140,7 @@ usage(){
     echo "  mount <alias> <host_dir> <container_dir> - Share a host folder with container"
     echo "  unmount <alias>                          - Stop sharing a host folder with container"
     echo "  shell                                    - Open a shell inside the container"
+    echo "  exec <command>                           - Run a single shell command inside the container"
     echo "  status                                   - Show current container status"
     echo "  list                                     - List containers created by LXW"
     echo "  ip                                       - Show current container ip address"
@@ -190,6 +197,15 @@ case "$1" in
     ;;
   "shell")
     shell
+    ;;
+  "exec")
+    if [ $# -lt 2 ]; then
+      usage
+      exit 1;
+    fi
+    shift
+    command="$*"
+    execute
     ;;
   "status")
     status

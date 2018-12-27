@@ -16,11 +16,11 @@ In fact, LXD container are much more like traditional VMs. They are a good bet e
 local development environments. There are caveats for sure:
 
 * The ecosystem is much smaller, e.g. there's a lack of orchestration tools
-* The technology is still young, and might be a moving target. 
+* The technology is still young, and might be a moving target.
 
 ### Why LXW ?
 LXW is a simple wrapper for LXD's command line interface, lxc. It's no replacement, but a small addition
-to make some things simpler, e.g. mounting host folders inside containers, and sharing file access rights.
+to make some things easier, e.g. mounting host folders inside containers, and sharing file access rights.
 In fact, it just uses plain lxc commands and some shell script magic to achieve this goal.
 
 ### Basic concept
@@ -35,14 +35,14 @@ folder as container name, so it might go like this:
 
 * Your project is located in ~/projects/someproject
 * The source files are located in ~/projects/someproject/source
-* You want to use a customized local image named 'nodejs' 
-* Inside your folder, just create a new container using LXW:`lxw create nodejs`, this
+* You want to use a customized local image named 'nodejs'
+* Inside your folder, just create a new container using LXW: `lxw create nodejs`, this
 gives you a container named "someproject"
 * Share your source folder using LXW: `lxw mount code ./source /var/www/html`
 * Start the container: `lxw start`
 * Open a shell:`lxw shell`
 
-And so on, you get it. If you need some examples on how to create custom local images, take a look at [this project](https://github.com/drubb/lxd-images) 
+And so on, you get it. If you need some examples on how to create custom local images, take a look at [this project](https://github.com/drubb/lxd-images)
 
 ## Requirements
 The wrapper scripts needs [LXD](https://linuxcontainers.org/lxd) installed and configured.
@@ -71,7 +71,7 @@ Create a container using a local or remote image, start it and enter the shell
 Examples:
 
 ```
-lxw launch images:alpine/3.5
+lxw launch images:alpine/3.8
 lxw launch mylocalimage
 ```
 
@@ -81,7 +81,7 @@ Create a container using a local or remote image
 Examples:
 
 ```
-lxw create images:alpine/3.5
+lxw create images:alpine/3.8
 lxw create mylocalimage
 ```
 
@@ -95,7 +95,7 @@ Restart the container
 Stop (shutdown) the container
 
 ### lxw kill
-Destroy the container. Displays a confirmation message and deletes the container. All data outside of shared folders will get lost.  
+Destroy the container. Displays a confirmation message and deletes the container. All data outside of shared folders will get lost.
 
 ### lxw mount \<alias> \<host_path> \<container_path>
 Share a folder on the host system with the container. Both the host user and the user inside the container get full access rights. Arguments:
@@ -122,6 +122,17 @@ lxw unmount code
 
 ### lxw shell
 Open a shell inside the container, using the default shell configured inside the container.
+
+### lxw exec \<command>
+Run a single shell command inside the container. For now it's not possible to
+run multiple commands.
+
+Examples:
+
+```
+lxw exec apk --version
+lxw exec ls /etc -al
+```
 
 ### lxw status
 Display the current status of the container, including the IP
