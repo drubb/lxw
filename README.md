@@ -47,7 +47,7 @@ And so on, you get it. If you need some examples on how to create custom local i
 ## Requirements
 The wrapper scripts needs [LXD](https://linuxcontainers.org/lxd) installed and configured.
 While it might work on many Linux distributions, it has been tested on current Ubuntu releases only.
-Stock images for LXD containers are located on the [LXD image server](https://us.images.linuxcontainers.org/)
+Stock images for LXD containers are located on the [LXD image server](https://images.linuxcontainers.org/)
 It's your part to create suitable custom images for use with LXW.
 
 ## Installation
